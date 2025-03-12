@@ -1,0 +1,938 @@
+
+/*** Spinner Start ***/
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .8s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+ }
+
+ #spinner.show {
+     transition: opacity .8s ease-out, visibility 0s linear .0s;
+     visibility: visible;
+     opacity: 1;
+ }
+
+ .back-to-top {
+    position: fixed;
+    left: 30px;
+    bottom: 30px;
+    display: flex;
+    width: 45px;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+    z-index: 99;
+}
+
+
+/* css nut chat voi bot */
+/* Nút hiển thị cố định */
+.chatbot-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4f8fd3;
+    color: white;
+    border: none;
+    border-radius: 50%; /* Hình tròn */
+    padding: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Cửa sổ chat */
+.chatbot-window {
+    display: none; /* Ẩn cửa sổ chat khi chưa nhấn vào nút */
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    width: 360px;
+    height: 500px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Thêm hiệu ứng box shadow */
+    z-index: 1001;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Phần đầu của cửa sổ chat */
+.chat-header {
+    display: flex;
+    justify-content: space-between; /* Thay đổi justify-content để căn giữa tiêu đề */
+    align-items: center;
+    padding: 5px;
+    background-color: var(--bs-primary);
+    color: var(--bs-white);
+    border-bottom: 1px solid #2171c1;
+}
+
+.chat-title {
+    flex-grow: 1;
+    text-align: center; /* Căn giữa dòng chữ "Chat với bot" */
+    font-weight: bold;
+}
+
+/* Nút "X" để đóng cửa sổ chat */
+.close-chat-btn {
+    background: none;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    color: var(--bs-white);  
+}
+
+/* Phần thân của cửa sổ chat */
+.chat-body {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Phần chứa nội dung chat */
+.chat-right {
+    width: 100%; /* Sử dụng toàn bộ chiều rộng, không còn chat-left */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tin nhắn */
+.message {
+    position: relative;
+    margin-bottom: 20px; /* Tăng khoảng cách để avatar không bị tràn */
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    font-size: 14px; /* Giảm cỡ chữ của phần nội dung tin nhắn */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Thêm hiệu ứng box shadow cho tin nhắn */
+    word-wrap: break-word; /* Đảm bảo nội dung tin nhắn dài sẽ không làm tràn */
+}
+
+.user-message {
+    background-color: #dcf8c6;
+    align-self: flex-end;
+    text-align: right; /* Canh phải nội dung tin nhắn */
+}
+
+.bot-message {
+    background-color: #f1f1f1;
+    align-self: flex-start;
+    text-align: left; /* Canh trái nội dung tin nhắn */
+}
+
+/* Avatar */
+.bot-message .avatar {
+    position: absolute;
+    bottom: -15px;
+    left: 0%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+/* Thêm khoảng cách giữa tên người nhắn và nội dung tin nhắn */
+.message p {
+    margin: 5px 0; /* Giảm khoảng cách giữa các đoạn văn */
+}
+
+.message p:first-child {
+    margin-bottom: 2px; /* Giảm khoảng cách dưới phần tên */
+}
+
+/* Phần nhập liệu ở dưới cùng */
+.chat-input-area {
+    display: flex;
+    border-top: 1px solid #ddd;
+    padding: 10px;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+}
+
+.send-message-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.send-message-btn i {
+    font-size: 18px;
+}
+
+
+/* CSS cho thông báo tùy chỉnh */
+.custom-alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #f44336; /* Màu nền đỏ để biểu thị cảnh báo */
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 300px;
+    margin-top: 10px; /* Khoảng cách giữa các thông báo */
+    font-family: 'Arial', sans-serif;
+}
+
+.close-alert-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Lớp CSS để ẩn thông báo */
+.hidden {
+    display: none;
+}
+
+/* Animation cho thông báo */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.custom-alert {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+
+
+/*** Spinner End ***/
+
+
+/*** Button Start ***/
+.btn {
+    font-weight: 600;
+    transition: .5s;
+}
+
+.btn-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-sm-square {
+    width: 34px;
+    height: 34px;
+}
+
+.btn-md-square {
+    width: 44px;
+    height: 44px;
+}
+
+.btn-lg-square {
+    width: 56px;
+    height: 56px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-md-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+.btn.border-primary {
+    transition: 0.5s;
+}
+
+.btn.border-primary:hover {
+    background: #0d5196;
+    color: var(--bs-white) !important;
+}
+
+/*** Topbar Start ***/
+.fixed-top {
+    transition: 0.5s;
+    background: var(--bs-white);
+    border: 0;
+}
+
+.topbar {
+    padding: 20px;
+    border-radius: 230px 100px;
+    background-color: #1dadd9;
+}
+
+.topbar .top-info {
+    font-size: 15px;
+    line-height: 0;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+}
+
+.topbar .top-link {
+    font-size: 15px;
+    line-height: 0;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+}
+
+.topbar .top-link a {
+    letter-spacing: 1px;
+}
+
+.topbar .top-link a small:hover {
+    color: var(--bs-secondary) !important;
+    transition: 0.5s;
+}
+
+.topbar .top-link a small:hover i {
+    color: var(--bs-primary) !important;
+}
+/*** Topbar End ***/
+
+/*** Navbar Start ***/
+.navbar .navbar-nav .nav-link {
+    padding: 10px 15px;
+    font-size: 16px;
+    transition: .5s;
+}
+
+.navbar {
+    height: 100px;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active,
+.fixed-top.bg-white .navbar .navbar-nav .nav-link:hover,
+.fixed-top.bg-white .navbar .navbar-nav .nav-link.active {
+    color: #1dadd9;
+}
+
+.navbar .dropdown-toggle::after {
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+@media (min-width: 1200px) {
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        visibility: hidden;
+        top: 100%;
+        transform: rotateX(-75deg);
+        transform-origin: 0% 0%;
+        border: 0;
+        transition: .5s;
+        opacity: 0;
+    }
+}
+
+.dropdown .dropdown-menu a:hover {
+    background: rgb(233, 205, 154);
+    color: #1dadd9;
+}
+
+.navbar .nav-item:hover .dropdown-menu {
+    transform: rotateX(0deg);
+    visibility: visible;
+    background: var(--bs-light) !important;
+    border-radius: 10px !important;
+    transition: .5s;
+    opacity: 1;
+}
+#searchModal .modal-content {
+    background: rgba(255, 255, 255, .8);
+}
+
+.right-2nd-navbar .btn-search:hover i,
+.right-2nd-navbar a:hover i
+{
+    transform: scale(1.1); /* Phóng to khi hover */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà */
+}
+
+/*** Navbar End ***/
+
+/*** Hero Header ***/
+.hero-header {
+    position: relative;
+    background: url(../img/nikewallap.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+.hero-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(57, 59, 59, 0.5); /* Adjust the opacity as needed */
+    z-index: 1;
+}
+
+.hero-header > * {
+    position: relative;
+    z-index: 2;
+}
+
+.carousel-item {
+    position: relative;
+}
+
+.carousel-item a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 25px;
+    background: linear-gradient(rgba(174, 181, 188, 0.7), rgba(21, 16, 16, 0.7));
+}
+
+.carousel-inner {
+    width: 100%;
+    overflow: hidden; /* Đảm bảo nội dung không tràn ra ngoài */
+    background-color: transparent; /* Loại bỏ màu nền của carousel */
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Đảm bảo ảnh bao phủ toàn bộ khung mà không bị cắt */
+}
+
+.carousel-item {
+    height: 300px; /* Giới hạn chiều cao của carousel item */
+}
+
+.col-md-12, .col-lg-5 {
+    padding: 0; /* Loại bỏ padding để tránh tràn ảnh */
+}
+
+
+.carousel-control-next,
+.carousel-control-prev {
+    width: 48px;
+    height: 48px;
+    border-radius: 48px;
+    border: 1px solid var(--bs-white);
+    background: var(--bs-primary);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-control-next {
+    margin-right: 20px;
+}
+
+.carousel-control-prev {
+    margin-left: 20px;
+}
+
+.page-header {
+    position: relative;
+    height: 200px;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/travis.gif);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.page-header a{
+    color: var(--bs-primary)!important;
+}
+
+@media (min-width: 992px) {
+    .hero-header,
+    .page-header {
+        margin-top: 152px !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-header,
+    .page-header {
+        margin-top: 97px !important;
+    }
+}
+/*** Hero Header end ***/
+
+
+/*** featurs Start ***/
+.featurs .featurs-item .featurs-icon {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.featurs .featurs-item .featurs-icon::after {
+    content: "";
+    width: 35px;
+    height: 35px;
+    background: #1dadd9;
+    position: absolute;
+    bottom: -10px;
+    transform: translate(-50%);
+    transform: rotate(45deg);
+    
+}
+/*** featurs End ***/
+
+
+/*** service Start ***/
+.service-item {
+    height: 400px; /* Chiều cao cố định */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden; /* Đảm bảo phần tử con không tràn */
+}
+
+.service-item img {
+    width: 100%;
+    height: 200px; /* Chiều cao cố định cho ảnh */
+    object-fit: cover; /* Đảm bảo ảnh bao phủ toàn bộ khung mà không bị méo */
+}
+
+
+.service .service-item .service-content {
+    position: relative;
+    width: 250px; 
+    height: 130px; 
+    top: -50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+/*** service End ***/
+
+
+/*** Fruits Start ***/
+/* thẻ sản phẩm */
+.fruite-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Đảm bảo chiều cao cố định */
+    min-height: 400px; /* Chiều cao tối thiểu */
+}
+
+.fruite-img img {
+    width: 100%;
+    height: 200px; /* Chiều cao cố định cho ảnh */
+    object-fit: cover; /* Đảm bảo ảnh không bị méo và bao phủ toàn bộ khung */
+}
+/* giỏ hàng và yêu thích */
+.btn-small {
+    font-size: 0.8rem; /* Giảm kích thước chữ */
+    padding: 0.4rem 0.75rem; /* Giảm padding của nút */
+}
+
+.flex-lg-nowrap {
+    flex-wrap: nowrap; /* Đảm bảo không xuống dòng */
+}
+
+.mt-auto {
+    margin-top: auto; /* Đẩy nội dung lên và đặt nút ở dưới cùng */
+}
+
+
+
+.fruite .tab-class .nav-item a.active {
+    background: var(--bs-primary) !important;
+}
+
+.fruite .tab-class .nav-item a.active span {
+    color: var(--bs-white) !important; 
+}
+
+.fruite .fruite-categorie .fruite-name {
+    line-height: 40px;
+}
+
+.fruite .fruite-categorie .fruite-name a {
+    color: var(--bs-primary);
+    transition: 0.5s;
+}
+
+.fruite .fruite-categorie .fruite-name a:hover {
+    color: var(--bs-secondary);
+}
+
+.fruite .fruite-item {
+    height: 100%;
+    transition: 0.5s;
+}
+.fruite .fruite-item:hover {
+    box-shadow: 0 0 55px rgba(0, 0, 0, 0.4);
+}
+
+.fruite .fruite-item .fruite-img {
+    overflow: hidden;
+    transition: 0.5s;
+    border-radius: 10px 10px 0 0;
+}
+
+.fruite .fruite-item .fruite-img img {
+    transition: 0.5s;
+}
+
+.fruite .fruite-item .fruite-img img:hover {
+    transform: scale(1.3);
+}
+
+/* chỉnh kích thước ảnh và nội dung sidebar của trang shop */
+.sidebar-item {
+    width: 300px; /* Chiều rộng cố định cho thẻ */
+    height: 150px; /* Chiều cao cố định cho thẻ */
+    border: none;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px; /* Khoảng cách giữa các thẻ */
+    padding: 10px; /* Khoảng cách bên trong thẻ */
+}
+
+.image-container {
+    width: 100px;
+    height: 100px; /* Chiều cao cố định cho khung hình ảnh */
+    overflow: hidden; /* Ẩn phần ảnh vượt ra ngoài khung */
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ảnh bao phủ toàn bộ khung và giữ tỉ lệ */
+}
+
+.stars, .price {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px; /* Khoảng cách giữa các phần tử ngôi sao và giá */
+}
+
+.left-pic-margin{
+    margin-top: 4rem;
+}
+
+/*** Fruits End ***/
+
+
+/*** vesitable Start ***/
+/* thẻ của slide tự chạy */
+.vesitable-item {
+    height: 500px; /* Chiều cao mới */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.vesitable-img img {
+    width: 100%;
+    height: 200px; /* Chiều cao cố định cho ảnh */
+    object-fit: cover; /* Đảm bảo ảnh không bị méo và bao phủ toàn bộ khung */
+}
+
+.btn-small {
+    font-size: 0.875rem; /* Giảm kích thước chữ */
+    padding: 0.375rem 0.75rem; /* Giảm padding của nút */
+}
+
+.flex-lg-nowrap {
+    flex-wrap: nowrap; /* Đảm bảo không xuống dòng */
+}
+
+.mt-auto {
+    margin-top: auto; /* Đẩy nội dung lên và đặt nút ở dưới cùng */
+}
+
+
+
+.vesitable .vesitable-item {
+    height: 100%;
+    transition: 0.5s;
+}
+
+.vesitable .vesitable-item:hover {
+    box-shadow: 0 0 55px rgba(0, 0, 0, 0.4);
+}
+
+.vesitable .vesitable-item .vesitable-img {
+    overflow: hidden;
+    transition: 0.5s;
+    border-radius: 10px 10px 0 0;
+}
+
+.vesitable .vesitable-item .vesitable-img img {
+    transition: 0.5s;
+}
+
+.vesitable .vesitable-item .vesitable-img img:hover {
+    transform: scale(1.2);
+}
+
+.vesitable .owl-stage {
+    margin: 50px 0;
+    position: relative;
+}
+
+.vesitable .owl-nav .owl-prev {
+    position: absolute;
+    top: -8px;
+    right: 0;
+    color: var(--bs-primary);
+    padding: 5px 25px;
+    border: 1px solid var(--bs-secondary);
+    border-radius: 20px;
+    transition: 0.5s;
+
+}
+
+.vesitable .owl-nav .owl-prev:hover {
+    background: var(--bs-secondary);
+    color: var(--bs-white);
+}
+
+.vesitable .owl-nav .owl-next {
+    position: absolute;
+    top: -8px;
+    right: 88px;
+    color: var(--bs-primary);
+    padding: 5px 25px;
+    border: 1px solid var(--bs-secondary);
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.vesitable .owl-nav .owl-next:hover {
+    background: var(--bs-secondary);
+    color: var(--bs-white);
+}
+/*** vesitable End ***/
+
+
+/*** Banner Section Start ***/
+.banner .banner-btn:hover {
+    background: rgb(14, 168, 137);
+}
+/*** Banner Section End ***/
+
+
+/*** Facts Start ***/
+.counter {
+    height: 100%;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+}
+
+.counter i {
+    font-size: 60px;
+    margin-bottom: 25px;
+}
+
+.counter h4 {
+    color: var(--bs-primary);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.counter h1 {
+    margin-bottom: 0;
+}
+/*** Facts End ***/
+
+
+/*** testimonial Start ***/
+.testimonial .owl-nav .owl-prev {
+    position: absolute;
+    top: -58px;
+    right: 0;
+    color: var(--bs-primary);
+    padding: 5px 25px;
+    border: 1px solid var(--bs-secondary);
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.testimonial .owl-nav .owl-prev:hover {
+    background: var(--bs-secondary);
+    color: var(--bs-white);
+}
+
+.testimonial .owl-nav .owl-next {
+    position: absolute;
+    top: -58px;
+    right: 88px;
+    color: var(--bs-primary);
+    padding: 5px 25px;
+    border: 1px solid var(--bs-secondary);
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.testimonial .owl-nav .owl-next:hover {
+    background: var(--bs-secondary);
+    color: var(--bs-white);
+}
+/*** testimonial End ***/
+
+
+/*** Single Page Start ***/
+.pagination {
+    display: inline-block;
+}
+  
+.pagination a {
+    color: var(--bs-dark);
+    padding: 10px 16px;
+    text-decoration: none;
+    transition: 0.5s;
+    border: 1px solid var(--bs-secondary);
+    margin: 0 4px;
+}
+  
+.pagination a.active {
+    background-color: var(--bs-primary);
+    color: var(--bs-light);
+    border: 1px solid var(--bs-secondary);
+}
+  
+.pagination a:hover:not(.active) {background-color: var(--bs-primary)}
+
+.nav.nav-tabs .nav-link.active {
+    border-bottom: 2px solid var(--bs-secondary) !important;
+}
+/*** Single Page End ***/
+
+
+/*** Footer Start ***/
+.footer .footer-item .btn-link {
+    line-height: 35px;
+    color: rgba(255, 255, 255, .5);
+    transition: 0.5s;
+}
+
+.footer .footer-item .btn-link:hover {
+    color: var(--bs-secondary) !important;
+}
+
+.footer .footer-item p.mb-4 {
+    line-height: 35px;
+}
+
+.address {
+    position: relative;
+    overflow: hidden; /* Ẩn phần tràn của ảnh */
+    display: flex;
+    justify-content: center; /* Đặt nội dung vào giữa */
+    align-items: center; /* Đặt nội dung vào giữa theo chiều dọc */
+    width: 100%; /* Đảm bảo chiều rộng của div */
+    height: 300px; /* Chiều cao tùy chỉnh của div, bạn có thể điều chỉnh theo nhu cầu */
+}
+
+.address img {
+    width: 80%;
+    border-radius: 10px;
+    border: solid 1px #1eaaf0;
+    transition: transform 0.3s ease; /* Thêm hiệu ứng chuyển đổi */
+    transform-origin: center center; /* Đặt điểm gốc để phóng to từ giữa ảnh */
+}
+
+.address img:hover {
+    transform: scale(3); /* Phóng to ảnh */
+    border: none;
+}
+
+
+/* chinh style cua modal chon size */
+.modal {
+    display: none; /* Ẩn modal theo mặc định */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Tắt cuộn chuột bên ngoài khi modal mở */
+    background-color: rgba(0, 0, 0, 0.5); /* Màu nền mờ */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto; /* Căn giữa theo chiều ngang và dọc */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Căn giữa chính xác */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+iframe {
+    width: 100%;
+    height: 600px; /* Chiều cao của iframe */
+    border: none;
+}
+
+/*** Footer End ***/
+
