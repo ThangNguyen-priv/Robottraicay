@@ -131,32 +131,34 @@
   // script.js
   document.addEventListener("DOMContentLoaded", function () {
     var modal = document.getElementById("sizeGuideModal");
-    var btn = document.getElementById("sizeGuideLink");
+    var btns = document.querySelectorAll("[id^='sizeGuideLink']"); // Chọn tất cả các phần tử có id bắt đầu bằng 'sizeGuideLink'
     var span = document.getElementsByClassName("close")[0];
     var iframe = document.getElementById("sizeGuideIframe");
 
     // Khi nhấp vào liên kết
-    btn.onclick = function (event) {
-      event.preventDefault();
-      modal.style.display = "block";
-      iframe.src = "chonsize.html";
-      document.body.style.overflow = "hidden"; // Tắt cuộn chuột
-    };
+    btns.forEach(btn => {
+        btn.onclick = function (event) {
+            event.preventDefault();
+            modal.style.display = "block";
+            iframe.src = "chonsize.html";
+            document.body.style.overflow = "hidden"; // Tắt cuộn chuột
+        };
+    });
 
     // Khi nhấp vào nút đóng
     span.onclick = function () {
-      modal.style.display = "none";
-      document.body.style.overflow = ""; // Bật lại cuộn chuột
+        modal.style.display = "none";
+        document.body.style.overflow = ""; // Bật lại cuộn chuột
     };
 
     // Khi nhấp ngoài modal
     window.onclick = function (event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-        document.body.style.overflow = ""; // Bật lại cuộn chuột
-      }
+        if (event.target == modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = ""; // Bật lại cuộn chuột
+        }
     };
-  });
+});
 
 // chat bot
 // Hiển thị/ẩn cửa sổ chat khi người dùng nhấn vào nút gọi hỗ trợ
@@ -241,6 +243,71 @@ document.getElementById("chat-input").addEventListener("keypress", function (eve
     sendMessage();
   }
 });
+
+
+// thay đổi ảnh khi chọn ảnh nhỏ trong gallery của shop details
+document.addEventListener("DOMContentLoaded", function () {
+  const thumbnails = document.querySelectorAll(".image-gallery img");
+  const mainImage = document.querySelector(".main-image");
+
+  // Đặt ảnh đầu tiên trong gallery làm ảnh chính khi tải trang
+  if (thumbnails.length > 0) {
+      mainImage.src = thumbnails[0].getAttribute('src');
+  }
+
+  thumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener("click", function () {
+          const imageSrc = this.getAttribute('src');
+          console.log("Đường dẫn của ảnh:", imageSrc); // Kiểm tra xem đường dẫn ảnh có xuất hiện trong console không
+
+          // Tạo hiệu ứng mờ dần để hình ảnh thay đổi mượt mà hơn
+          mainImage.style.opacity = 0;
+          setTimeout(() => {
+              mainImage.src = imageSrc;
+              mainImage.style.opacity = 1;
+          }, 300); // Thời gian hiệu ứng mờ dần (300ms)
+      });
+  });
+});
+
+//chọn lấy kích cỡ của sản phẩm
+document.addEventListener("DOMContentLoaded", function() {
+  const sizeOptions = document.querySelectorAll(".size-option");
+
+  sizeOptions.forEach(option => {
+      option.addEventListener("click", function() {
+          // Xóa lớp 'active' từ tất cả các nút
+          sizeOptions.forEach(opt => opt.classList.remove("active"));
+
+          // Thêm lớp 'active' vào nút hiện tại
+          this.classList.add("active");
+
+          // Lấy giá trị của nút hiện tại
+          const sizeValue = this.textContent;
+          console.log("Giá trị kích cỡ đã chọn:", sizeValue);
+
+          // Bạn có thể thực hiện các hành động khác với giá trị này nếu cần
+      });
+  });
+});
+
+//lựa chọn hình thức thanh toán
+document.addEventListener("DOMContentLoaded", function() {
+  const buttons = document.querySelectorAll('.payment-option');
+  const paymentTabs = document.querySelectorAll('.tab-pane');
+
+  buttons.forEach(button => {
+      button.addEventListener('click', function() {
+          buttons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+
+          const option = this.getAttribute('data-option');
+          paymentTabs.forEach(tab => tab.classList.remove('active', 'show'));
+          document.getElementById(option).classList.add('active', 'show');
+      });
+  });
+});
+
 
 
   // Product Quantity

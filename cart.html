@@ -118,7 +118,7 @@
                 <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
                     <div class="bg-light rounded">
                         <div class="p-4">
-                            <h1 class="display-6 mb-4">Cart <span class="fw-normal">Total</span></h1>
+                            <h1 class="display-6 mb-4">Giỏ hàng</span></h1>
                             <div class="d-flex justify-content-between mb-4">
                                 <h5 class="mb-0 me-4">Subtotal:</h5>
                                 <p class="mb-0">$96.00</p>
@@ -144,6 +144,133 @@
         </div>
     </div>
     <!-- Cart Page End -->
+    
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+        <div class="container py-5">
+            <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
+                <div class="row g-4">
+                    <div class="col-lg-3">
+                        <a href="#">
+                            <h1 class="text-primary mb-0">T-HSHOP</h1>
+                            <p class="text-secondary mb-0">Nâng niu bàn chân vịt</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="position-relative mx-auto">
+                            <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number"
+                                placeholder="Your Email">
+                            <button type="submit"
+                                class="btn btn-primary border-0 border-warning py-3 px-4 position-absolute rounded-pill text-white"
+                                style="top: 0; right: 0;">Đăng ký ngay</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="d-flex justify-content-end pt-3">
+                            <a class="btn  btn-outline-primary me-2 btn-md-square rounded-circle" href=""><i
+                                    class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-primary me-2 btn-md-square rounded-circle" href=""><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-primary text-danger me-2 btn-md-square rounded-circle" href=""><i
+                                    class="fab fa-youtube"></i></a>
+                            <a class="btn btn-outline-primary text-light btn-md-square rounded-circle" href=""><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex flex-column text-start footer-item">
+                        <h4 class="text-light mb-3">Thông tin shop</h4>
+                        <a class="btn-link" href="">Về chúng tôi</a>
+                        <a class="btn-link" href="">Liên hệ</a>
+                        <a class="btn-link" href="">Chính sách riêng tư</a>
+                        <a class="btn-link" href="">Điều khoản & Điều kiện</a>
+                        <a class="btn-link" href="#" id="sizeGuideLink2">Hướng dẫn chọn size</a>
+                        <a class="btn-link" href="">Câu hỏi & Giải đáp</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="address">
+                        <a href="contact.html"><img src="img/map.png" alt="" /></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-item">
+                        <h4 class="text-light mb-3">Liên hệ</h4>
+                        <p>Địa chỉ: 218 Lĩnh Nam, Hoàng Mai</p>
+                        <p>Email: Example@gmail.com</p>
+                        <p>Phone: +0123 4567 8910</p>
+                        <p>Hình thức thanh toán</p>
+                        <img src="img/payment.png" class="img-fluid" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+    
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright bg-dark py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>ThangNguyn</a>, All
+                        right reserved.</span>
+                </div>
+                <div class="col-md-6 my-auto text-center text-md-end text-white">
+                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                    Designed By <a class="border-bottom" href="https://htmlcodex.com">Thanghehe</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+    
+    <!-- bot chat -->
+    <!-- Nút hiển thị cố định ở góc dưới phải -->
+    <button id="chatbot-button" class="chatbot-btn">
+        <img src="img/chatbot.png" alt="Chat Icon" class="chat-icon">
+    </button>
+    
+    <!-- Cửa sổ chat -->
+    <div id="chatbot-window" class="chatbot-window" hidden>
+        <div class="chat-header">
+            <span class="chat-title">Chat với bot</span>
+            <button id="close-chat" class="close-chat-btn">&times;</button>
+        </div>
+        <div class="chat-body">
+            <div class="chat-right" id="chat-content">
+                <!-- Nội dung chat sẽ được thêm vào đây -->
+                <div class="chat-messages" id="chat-messages"></div>
+            </div>
+        </div>
+        <div class="chat-input-area" id="chat-input-area">
+            <input type="text" id="chat-input" class="chat-input" placeholder="Nhập tin nhắn...">
+            <button id="send-message" class="send-message-btn"><i class="fa fa-paper-plane"></i></button>
+        </div>
+    </div>
+    
+    <!-- Thông báo tùy chỉnh -->
+    <div id="custom-alert" class="custom-alert hidden">
+        <span id="alert-message"></span>
+        <button id="close-alert" class="close-alert-btn">&times;</button>
+    </div>
+    
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
+            class="fa fa-arrow-up"></i></a>
+    
+    <!-- Modal chon size -->
+    <div id="sizeGuideModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe src="" id="sizeGuideIframe" frameborder="0"></iframe>
+        </div>
+    </div>
 
     <!-- Bao gồm thư viện jQuery (Chỉ tải một phiên bản) -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

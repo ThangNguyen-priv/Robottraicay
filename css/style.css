@@ -602,7 +602,8 @@
 }
 
 .fruite .fruite-categorie .fruite-name a:hover {
-    color: var(--bs-secondary);
+    color: rgb(209, 10, 64);
+    font-size: large;
 }
 
 .fruite .fruite-item {
@@ -936,3 +937,228 @@ iframe {
 
 /*** Footer End ***/
 
+
+/*** shop details ***/
+/* css ảnh sản phẩm */
+.main-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px; /* Điều chỉnh kích thước phù hợp */
+    height: 400px; /* Điều chỉnh kích thước phù hợp */
+    border: 1px solid #ccc; /* Thêm đường viền nếu cần */
+    overflow: hidden; /* Đảm bảo ảnh không tràn ra ngoài */
+    background-color: #f8f8f8; /* Thêm màu nền nếu cần */
+}
+
+.main-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Đảm bảo giữ nguyên tỉ lệ ảnh */
+    border-radius: 10px; /* Thêm bo góc nếu cần */
+}
+
+.image-gallery {
+    display: flex;
+    flex-direction: column;
+    max-height: 400px; /* Điều chỉnh nếu cần thiết */
+    overflow-y: auto; /* Kích hoạt cuộn dọc nếu có nhiều hơn 5 hình ảnh */
+    margin-right: 10px;
+    scroll-behavior: smooth; /* Thêm hiệu ứng mượt mà */
+}
+
+.image-gallery img {
+    width: 100px; /* Điều chỉnh nếu cần thiết */
+    height: 100px; /* Điều chỉnh nếu cần thiết */
+    object-fit: cover; /* Giữ tỉ lệ và cắt hình ảnh nếu cần thiết */
+    margin-bottom: 10px;
+    flex-shrink: 0; /* Đảm bảo kích thước cố định cho từng ảnh */
+}
+
+/* Ẩn thanh cuộn nhưng vẫn cho phép cuộn */
+.image-gallery::-webkit-scrollbar {
+    display: none;
+}
+
+.image-gallery {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* css chọn size */
+.size-selection {
+    margin: 20px 0;
+}
+
+.size-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.size-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Đảm bảo kích thước phù hợp với col */
+    height: 60px; /* Điều chỉnh kích thước phù hợp */
+    border: 2px solid #ccc; /* Tăng độ dày đường viền */
+    border-radius: 5px; /* Thêm bo góc nếu cần */
+    cursor: pointer;
+    background-color: #f8f8f8; /* Màu nền */
+    font-size: 18px; /* Tăng kích thước chữ */
+    transition: background-color 0.3s; /* Thêm hiệu ứng chuyển màu nền */
+}
+
+.size-option.active {
+    background-color: #ccc; /* Màu nền khi nhấn */
+    border-color: rgb(110, 110, 110);
+}
+
+.size-option:hover {
+    background-color: #e0e0e0; /* Màu nền khi di chuột qua */
+    border-color: rgb(110, 110, 110);
+}
+
+.size-option:active {
+    background-color: #ccc; /* Màu nền khi nhấn */
+}
+
+
+/* nút thêm giỏ hàng và yêu thích */
+.button-container {
+    margin: 20px 0; /* Thêm khoảng cách trên và dưới */
+}
+
+.custom-btn {
+    border: 2px solid #6c757d; /* Tăng độ dày đường viền */
+    padding: 12px 20px; /* Điều chỉnh padding cho nút */
+    margin: 0 5px; /* Giảm khoảng cách giữa các nút */
+    font-size: 16px; /* Điều chỉnh kích thước chữ */
+    transition: background-color 0.3s, border-color 0.3s; /* Thêm hiệu ứng chuyển màu */
+}
+
+.custom-btn:hover {
+    background-color: #e0e0e0; /* Màu nền khi di chuột qua */
+    border-color: #007bff; /* Màu viền khi di chuột qua */
+}
+
+/*** Checkout ***/
+
+.Checkout-Title {
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid rgb(177, 170, 170);
+}
+
+.Checkout-Title button{
+    border: 0.5px solid rgb(173, 164, 164);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.Checkout-Title .checkout-btn:hover{
+    border: 0.5px solid rgb(223, 101, 101);
+    color: rgb(201, 80, 80);
+}
+
+/* Định dạng nút bấm thanh toán */
+.btn.payment-option {
+    font-size: 16px;
+    padding: 20px;
+    border-radius: 10px;
+    color: rgb(121, 116, 116);
+    transition: background-color 0.3s, border-color 0.3s;
+    box-sizing: border-box; /* Đảm bảo kích thước bao gồm cả đường viền */
+}
+
+.btn.payment-option:hover {
+    outline: 2px solid black; /* Sử dụng outline thay cho border */
+}
+
+.btn.payment-option.active {
+    outline: 2px solid black; /* Sử dụng outline thay cho border */
+}
+
+/* Định dạng tab nội dung */
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active.show {
+    display: block;
+}
+
+.vnpay-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.img-qrcode {
+    width: 60%; /* Điều chỉnh kích thước theo phần trăm, có thể nhỏ hơn */
+    max-width: 150px; /* Giới hạn kích thước tối đa */
+    height: auto;
+    border: 1px solid rgb(121, 116, 116);
+    object-fit: contain; /* Đảm bảo giữ nguyên toàn bộ ảnh */
+}
+
+
+/*** Contact ***/
+
+/* contact ben trai */
+/* Định dạng form liên hệ */
+.contact-message .form-control {
+    font-size: 16px;
+    border: 0.5px solid #ced4da; /* Tăng độ dày cho viền */
+    border-radius: 8px;
+    background-color: #f8f9fa; /* Màu nền nhẹ */
+    color: #495057; /* Màu chữ */
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s; /* Thêm hiệu ứng */
+}
+
+.contact-message .form-control:focus {
+    background-color: #ffffff;
+    border: 2px solid #0a9fef; /* Viền dày hơn khi focus */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Hiệu ứng bóng khi focus */
+}
+
+/* Định dạng nút gửi */
+.contact-message .btn {
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+.contact-message .btn:hover {
+    background-color: #007bff;
+    color: #ffffff;
+    border-color: #8c7de2;
+}
+
+/* Định dạng cho placeholder */
+.contact-message .form-control::placeholder {
+    color: #adb5bd; /* Màu placeholder */
+    opacity: 1; /* Đảm bảo màu sắc được hiển thị đầy đủ */
+}
+
+/* Thêm hiệu ứng đổ bóng cho khu vực liên hệ */
+.contact-message {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+    padding: 20px; /* Thêm khoảng cách xung quanh */
+    border-radius: 10px; /* Bo góc cho khu vực liên hệ */
+}
+
+/* Thêm hiệu ứng đổ bóng cho lớp contact-info */
+.contact-info {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng nhẹ */
+    border-radius: 10px; /* Bo góc */
+    padding: 10px; /* Thêm khoảng cách xung quanh */
+}
+/* Đảm bảo ô textarea không thể thay đổi kích thước */
+textarea.form-control {
+    resize: none;
+}
