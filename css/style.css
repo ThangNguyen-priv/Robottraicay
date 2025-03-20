@@ -1162,3 +1162,57 @@ iframe {
 textarea.form-control {
     resize: none;
 }
+
+/*** Size Guide modal ***/
+/* Định dạng modal */
+#sizeGuideModal {
+    position: fixed;
+    top: 10%; /* Đặt cách top bar 10% màn hình */
+    width: 100%; /* Giảm chiều rộng modal */
+    max-height: 90%; /* Giới hạn chiều cao modal để không che top bar */
+    border-radius: 10px; /* Bo góc */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bóng đổ */
+    z-index: 1000; /* Đảm bảo modal luôn ở lớp trên cùng */
+    display: none; /* Ẩn modal mặc định */
+}
+/* Nội dung bên trong modal */
+#sizeGuideModal .modal-content {
+    width: 40%;
+    height: 75vh;
+    padding: 0; /* Loại bỏ padding để nội dung tràn hết */
+    box-sizing: border-box; /* Đảm bảo không vượt kích thước modal */
+}
+
+/* Iframe bên trong modal */
+#sizeGuideModal iframe {
+    width: 100%; /* Tràn toàn bộ chiều rộng */
+    height: 100%; /* Tràn toàn bộ chiều cao */
+    border: none; /* Loại bỏ viền iframe */
+}
+/* Chỉnh vị trí nút đóng modal */
+#sizeGuideModal .close {
+    position: absolute; /* Đảm bảo vị trí là tuyệt đối trong modal */
+    top: 10px; /* Khoảng cách từ phía trên modal */
+    right: 20px;
+    font-size: 25px; /* Kích thước nút */
+    color: black; /* Màu chữ */
+    cursor: pointer; /* Thêm hiệu ứng trỏ tay khi hover */
+    background: none; /* Loại bỏ màu nền (nếu có) */
+    border: none; /* Loại bỏ đường viền */
+    border: 2px solid #5587de; /* Thêm viền */
+    border-radius: 50%; /* Tạo viền bo tròn */
+    width: 35px; /* Đặt chiều rộng cho nút */
+    height: 35px; /* Đặt chiều cao cho nút */
+    display: flex; /* Dùng flexbox để căn giữa */
+    justify-content: center; /* Căn giữa nội dung ngang */
+    align-items: center; /* Căn giữa nội dung dọc */
+    transition: all 0.3s ease; /* Hiệu ứng mượt mà khi hover */
+}
+
+/* Hiệu ứng khi hover nút đóng */
+#sizeGuideModal .close:hover {
+    color: rgb(224, 31, 31); /* Chữ chuyển sang màu trắng */
+    border-color: #e81b30; /* Viền đổi sang xanh */
+    transform: scale(1.1); /* Tăng kích thước khi hover */
+}
+
