@@ -44,8 +44,10 @@
         <div class="container topbar d-none d-lg-block">
             <div class="d-flex justify-content-between">
                 <div class="top-info ps-2">
-                    <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">Ngõ 218, Lĩnh Nam, Hoàng Mai</a></small>
-                    <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">Email@Example.com</a></small>
+                    <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#"
+                            class="text-white">Ngõ 218, Lĩnh Nam, Hoàng Mai</a></small>
+                    <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#"
+                            class="text-white">Email@Example.com</a></small>
                 </div>
                 <div class="top-link pe-2">
                     <a href="#" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
@@ -55,31 +57,72 @@
         </div>
         <div class="container px-0">
             <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                <a href="index.html" class="navbar-brand"><h1 class="text-primary display-6">T-HSHOP</h1></a>
-                <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars text-primary"></span>
-                </button>
+                <!-- Logo -->
+                <a href="index.html" class="navbar-brand">
+                    <h1 class="text-primary display-6">T-HSHOP</h1>
+                </a>
+
+                <!-- Icons and Hamburger button -->
+                <div class="d-flex align-items-center">
+                    <!-- Icons -->
+                    <div class="d-flex d-xl-none me-2">
+                        <button class="btn-search border-primary btn border btn-md-square rounded-circle bg-white me-2"
+                            data-bs-toggle="modal" data-bs-target="#searchModal"><i
+                                class="fas fa-search text-primary"></i>
+                        </button>
+                        <a href="#" class="position-relative me-2 my-auto">
+                            <i class="fa fa-shopping-bag text-primary fa-2x"></i>
+                            <span
+                                class="position-absolute bg-danger rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+                                style="top: -5px; left: 15px; height: 20px; min-width: 20px;">0</span>
+                        </a>
+                        <a href="#" class="my-auto">
+                            <i class="fas fa-user fa-2x text-primary"></i>
+                        </a>
+                    </div>
+
+                    <!-- Hamburger button -->
+                    <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars text-primary"></span>
+                    </button>
+                </div>
+
+                <!-- Navbar content -->
                 <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+                    <!-- Navbar links -->
                     <div class="navbar-nav mx-auto">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="shop.html" class="nav-item nav-link">Shop</a>
-                        <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a>
+                        <a href="index.html" class="nav-item nav-link fs-4">Home</a>
+                        <a href="nike.html" class="nav-item nav-link fs-4">Nike</a>
+                        <a href="adidas.html" class="nav-item nav-link fs-4">Adidas</a>
+                        <a href="adidas.html" class="nav-item nav-link fs-4">NewBalance</a>
+                        <a href="adidas.html" class="nav-item nav-link fs-4">Puma</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <a href="#" class="nav-link dropdown-toggle fs-4" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                <a href="cart.html" class="dropdown-item">Cart</a>
-                                <a href="chackout.html" class="dropdown-item">Chackout</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="404.html" class="dropdown-item">404 Page</a>
+                                <a href="shop.html" class="dropdown-item fs-4">Shop</a>
+                                <a href="shop-detail.html" class="dropdown-item fs-4 active">Shopdetails</a>
+                                <a href="sale.html" class="dropdown-item fs-4">Sale</a>
+                                <a href="cart.html" class="dropdown-item fs-4">Cart</a>
+                                <a href="chackout.html" class="dropdown-item fs-4">Checkout</a>
+                                <a href="testimonial.html" class="dropdown-item fs-4">Testimonial</a>
+                                <a href="404.html" class="dropdown-item fs-4">404 Page</a>
+                                <a href="contact.html" class="nav-item nav-link fs-4">Contact</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
-                    <div class="right-2nd-navbar d-flex m-3 me-0">
-                        <button class="btn-search border-primary btn border btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
+
+                    <!-- Icons for large screens -->
+                    <div class="d-none d-xl-flex">
+                        <button class="btn-search border-primary btn border btn-md-square rounded-circle bg-white me-4"
+                            data-bs-toggle="modal" data-bs-target="#searchModal"><i
+                                class="fas fa-search text-primary"></i>
+                        </button>
                         <a href="#" class="position-relative me-4 my-auto">
                             <i class="fa fa-shopping-bag text-primary fa-2x"></i>
-                            <span class="position-absolute bg-danger rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">0</span>
+                            <span
+                                class="position-absolute bg-danger rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+                                style="top: -5px; left: 15px; height: 20px; min-width: 20px;">0</span>
                         </a>
                         <a href="#" class="my-auto">
                             <i class="fas fa-user fa-2x text-primary"></i>
@@ -93,16 +136,14 @@
 
 
     <!-- Modal Search Start -->
-    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        data-bs-backdrop="true">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content rounded-0">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
                 <div class="modal-body d-flex align-items-center">
                     <div class="input-group w-75 mx-auto d-flex">
-                        <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                        <input type="search" class="form-control p-3" placeholder="keywords"
+                            aria-describedby="search-icon-1">
                         <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
                     </div>
                 </div>
@@ -730,56 +771,6 @@
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
 
-
-
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const thumbnails = document.querySelectorAll(".image-gallery img");
-                const mainImage = document.querySelector(".main-image");
-
-                // Đặt ảnh đầu tiên trong gallery làm ảnh chính khi tải trang
-                if (thumbnails.length > 0) {
-                    mainImage.src = thumbnails[0].getAttribute('src');
-                }
-
-                thumbnails.forEach(thumbnail => {
-                    thumbnail.addEventListener("click", function () {
-                        const imageSrc = this.getAttribute('src');
-                        console.log("Đường dẫn của ảnh:", imageSrc); // Kiểm tra xem đường dẫn ảnh có xuất hiện trong console không
-
-                        // Tạo hiệu ứng mờ dần để hình ảnh thay đổi mượt mà hơn
-                        mainImage.style.opacity = 0;
-                        setTimeout(() => {
-                            mainImage.src = imageSrc;
-                            mainImage.style.opacity = 1;
-                        }, 300); // Thời gian hiệu ứng mờ dần (300ms)
-                    });
-                });
-            });
-        </script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const sizeOptions = document.querySelectorAll(".size-option");
-
-                sizeOptions.forEach(option => {
-                    option.addEventListener("click", function() {
-                        // Xóa lớp 'active' từ tất cả các nút
-                        sizeOptions.forEach(opt => opt.classList.remove("active"));
-
-                        // Thêm lớp 'active' vào nút hiện tại
-                        this.classList.add("active");
-
-                        // Lấy giá trị của nút hiện tại
-                        const sizeValue = this.textContent;
-                        console.log("Giá trị kích cỡ đã chọn:", sizeValue);
-
-                        // Bạn có thể thực hiện các hành động khác với giá trị này nếu cần
-                    });
-                });
-            });
-        </script>
-
-        
     <!-- Modal chon size -->
     <div id="sizeGuideModal" class="modal">
         <div class="modal-content">

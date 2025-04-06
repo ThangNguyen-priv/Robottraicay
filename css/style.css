@@ -340,7 +340,9 @@
 }
 
 .navbar {
-    height: 100px;
+    height: auto; /* Đặt chiều cao tự động để tránh bị đẩy */
+    min-height: 70px; /* Đặt chiều cao tối thiểu */
+    align-items: center; /* Căn giữa nội dung theo chiều dọc */
     border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
 
@@ -386,7 +388,14 @@
     transition: .5s;
     opacity: 1;
 }
+
+#searchModal{
+    z-index: 3;
+}
+
+
 #searchModal .modal-content {
+    min-width: 100%;
     background: rgba(255, 255, 255, .8);
 }
 
@@ -956,7 +965,14 @@ iframe {
     max-height: 100%;
     object-fit: contain; /* Đảm bảo giữ nguyên tỉ lệ ảnh */
     border-radius: 10px; /* Thêm bo góc nếu cần */
+    cursor: zoom-in; /* Thay đổi con trỏ khi hover */
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease, transform-origin 0.4s ease;
+    opacity: 1;
 }
+.main-image.fade-out {
+    opacity: 0;
+}
+
 
 .image-gallery {
     display: flex;
@@ -965,6 +981,10 @@ iframe {
     overflow-y: auto; /* Kích hoạt cuộn dọc nếu có nhiều hơn 5 hình ảnh */
     margin-right: 10px;
     scroll-behavior: smooth; /* Thêm hiệu ứng mượt mà */
+    flex-shrink: 0; /* Đảm bảo gallery không bị co lại */
+}
+.image-gallery img:hover {
+    transform: scale(1.1); /* Phóng to nhẹ khi hover */
 }
 
 .image-gallery img {
@@ -973,6 +993,8 @@ iframe {
     object-fit: cover; /* Giữ tỉ lệ và cắt hình ảnh nếu cần thiết */
     margin-bottom: 10px;
     flex-shrink: 0; /* Đảm bảo kích thước cố định cho từng ảnh */
+    transition: transform 0.3s ease; /* Hiệu ứng khi hover */
+    cursor: pointer;
 }
 
 /* Ẩn thanh cuộn nhưng vẫn cho phép cuộn */
@@ -1172,7 +1194,7 @@ textarea.form-control {
     max-height: 90%; /* Giới hạn chiều cao modal để không che top bar */
     border-radius: 10px; /* Bo góc */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bóng đổ */
-    z-index: 1000; /* Đảm bảo modal luôn ở lớp trên cùng */
+    z-index: 3; /* Đảm bảo modal luôn ở lớp trên cùng */
     display: none; /* Ẩn modal mặc định */
 }
 /* Nội dung bên trong modal */
@@ -1216,3 +1238,116 @@ textarea.form-control {
     transform: scale(1.1); /* Tăng kích thước khi hover */
 }
 
+/*** Qr code page ***/
+
+/* Thiết lập chung */
+.bg-payment{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #77b2c3a5, #e5e0d7c8);
+    display: flex;
+    justify-content: center; /* Căn giữa ngang */
+    align-items: center; /* Căn giữa dọc */
+    min-height: 100vh;
+}
+
+/* Container chính */
+.payment-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 50%; /* Chiều rộng tối đa ban đầu */
+    max-width: 600px; /* Giới hạn chiều rộng lớn nhất */
+    padding: 20px;
+    text-align: center;
+    margin: 10px; /* Đảm bảo khoảng cách ở chế độ nhỏ */
+    min-height: 400px;
+}
+
+/* Tiêu đề */
+.payment-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Vùng mã QR */
+.qr-code-section {
+    padding: 20px 0;
+}
+
+.qr-code-image {
+    width: 100%;
+    max-width: 200px; /* Giới hạn kích thước mã QR */
+    height: auto; /* Đảm bảo giữ tỉ lệ hình ảnh */
+    object-fit: contain;
+}
+
+/* Vùng thông tin hóa đơn */
+.bill-info-section {
+    border-top: 1px solid #ddd;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.info-item {
+    margin-bottom: 15px;
+    text-align: left; /* Căn trái để dễ đọc */
+}
+
+.info-label {
+    font-weight: bold;
+    display: inline-block;
+    width: 40%; /* Chiếm 40% chiều ngang */
+    color: #333;
+}
+
+.info-value {
+    display: inline-block;
+    width: 55%; /* Chiếm 55% chiều ngang */
+    color: #555;
+    text-align: right; /* Căn phải thông tin */
+}
+
+/* Đáp ứng cho màn hình nhỏ */
+@media (max-width: 576px) {
+    .info-label, .info-value {
+        display: block; /* Thông tin hóa đơn xuống hàng */
+        width: 100%;
+        text-align: left;
+        margin-bottom: 5px;
+    }
+
+    .payment-title {
+        font-size: 20px;
+    }
+
+    .payment-container {
+        padding: 15px; /* Giảm khoảng cách trong container */
+    }
+}
+
+* Container nút */
+.back-button-container {
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    text-align: center; /* Căn giữa nội dung */
+    margin-top: 20px; /* Tạo khoảng cách phía trên */
+}
+
+/* Nút */
+.btn-back {
+    width: 100%; /* Chiếm toàn bộ chiều rộng container */
+    padding: 10px 20px; /* Tăng kích thước để nút trông nổi bật */
+    font-size: 16px;
+    border-radius: 5px; /* Bo góc nút */
+    border: none;
+    background-color: #28a745; /* Màu xanh cho nút */
+    color: white;
+    cursor: pointer; /* Con trỏ thay đổi khi hover */
+}
+
+/* Hiệu ứng hover */
+.btn-back:hover {
+    background-color: #218838; /* Màu xanh đậm khi hover */
+    opacity: 0.9; /* Nhẹ mờ khi hover */
+}

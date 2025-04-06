@@ -264,8 +264,9 @@ document.addEventListener("DOMContentLoaded", function () {
           mainImage.style.opacity = 0;
           setTimeout(() => {
               mainImage.src = imageSrc;
+              mainImage.classList.remove("fade-out");
               mainImage.style.opacity = 1;
-          }, 300); // Thời gian hiệu ứng mờ dần (300ms)
+          }, 400); // Thời gian hiệu ứng mờ dần (400ms)
       });
   });
 });
@@ -307,8 +308,27 @@ document.addEventListener("DOMContentLoaded", function() {
       });
   });
 });
+// zoom ảnh theo chuột ở details sản phẩm
+document.addEventListener("DOMContentLoaded", function () {
+  const mainImageContainer = document.querySelector(".main-image-container");
+  const mainImage = document.querySelector(".main-image");
 
+  mainImageContainer.addEventListener("mousemove", (e) => {
+      const rect = mainImageContainer.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
 
+      // Cập nhật điểm gốc zoom và phóng to ảnh
+      mainImage.style.transformOrigin = `${x}% ${y}%`;
+      mainImage.style.transform = "scale(2)"; // Phóng to ảnh
+  });
+
+  mainImageContainer.addEventListener("mouseleave", () => {
+      // Trả về trạng thái ban đầu
+      mainImage.style.transformOrigin = "center center";
+      mainImage.style.transform = "scale(1)";
+  });
+});
 
   // Product Quantity
   $(".quantity button").on("click", function () {
