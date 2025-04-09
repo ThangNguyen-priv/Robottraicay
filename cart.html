@@ -33,9 +33,10 @@
 
 <body>
 
-    
+
     <!-- Spinner Start -->
-    <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+    <div id="spinner"
+        class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
         <div class="spinner-grow text-primary" role="status"></div>
     </div>
     <!-- Spinner End -->
@@ -173,21 +174,21 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col" class="text-center align-middle">
+                            <!-- <th scope="col" class="text-center align-middle">
                                 <input type="checkbox" class="form-check-input mx-auto d-block">
-                            </th>
+                            </th> -->
                             <th scope="col" colspan="2">Sản phẩm</th>
                             <th scope="col">Đơn Giá</th>
                             <th scope="col">Số Lượng</th>
-                            <th scope="col">Số Tiền</th>
+                            <th scope="col">Thành tiền</th>
                             <th scope="col">Thao Tác</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row" class="text-center align-middle">
+                            <!-- <th scope="row" class="text-center align-middle">
                                 <input type="checkbox" class="form-check-input mx-auto d-block">
-                            </th>
+                            </th> -->
                             <th scope="row" class="align-middle">
                                 <div class="d-flex align-items-center justify-content-center" style="width: 100px;">
                                     <img src="img/nikeair.png" class="img-fluid rounded-circle"
@@ -198,7 +199,7 @@
                                 <p class="mb-0">Air Force 1</p>
                             </td>
                             <td class="align-middle">
-                                <p class="mb-0">2.99 $</p>
+                                <p class="mb-0 text-danger">2.99 $</p>
                             </td>
                             <td class="align-middle">
                                 <div class="input-group quantity" style="width: 100px;">
@@ -217,7 +218,7 @@
                                 </div>
                             </td>
                             <td class="align-middle">
-                                <p class="mb-0">2.99 $</p>
+                                <p class="mb-0 text-danger">2.99 $</p>
                             </td>
                             <td class="align-middle">
                                 <button class="btn btn-md rounded-circle bg-light border">
@@ -230,43 +231,95 @@
             </div>
             <hr>
             <div class="mt-5">
-                <input type="text" class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Coupon Code">
+                <input type="text" class="border-0 border-bottom rounded me-5 py-3 mb-4 w-25" placeholder="Coupon Code">
                 <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">Apply
                     Coupon</button>
             </div>
-            <hr>
-            <div class="row g-4 justify-content-end">
-                <div class="col-8"></div>
-                <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
-                    <div class="bg-light rounded">
-                        <div class="p-4">
-                            <h1 class="display-6 mb-4">Giỏ hàng</span></h1>
-                            <div class="d-flex justify-content-between mb-4">
-                                <h5 class="mb-0 me-4">Subtotal:</h5>
-                                <p class="mb-0">$96.00</p>
+        </div>
+
+        <!-- chọn hình thức thanh toán và địa chỉ -->
+        <div class="container py-3 bg-light rounded" style="min-height: 760px;">
+            <div class="col-lg-12 row">
+                <div class="col-lg-4 col-xl-4 col-md-4 col-sm-12">
+                    <div class="col p-4">
+                        <div class="Checkout-Title mb-3">
+                            <h2 class="fw-bold">Chọn địa chỉ nhận hàng</h2>
+                            <div class="form-item mb-2">
+                                <label class="form-label my-3 text-danger fa fa-map-marked-alt fs-5"> Địa chỉ nhận
+                                    hàng</label>
+                                <input type="text" class="form-control" placeholder="Địa chỉ của bạn">
                             </div>
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-0 me-4">Shipping</h5>
-                                <div class="">
-                                    <p class="mb-0">Flat rate: $3.00</p>
-                                </div>
-                            </div>
-                            <p class="mb-0 text-end">Shipping to Ukraine.</p>
+                            <button class="checkout-btn">Chọn địa chỉ trên bản đồ</button>
                         </div>
-                        <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
-                            <h5 class="mb-0 ps-4 me-4">Total</h5>
-                            <p class="mb-0 pe-4">$99.00</p>
-                        </div>
-                        <button
-                            class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4 btn"
-                            type="button">Proceed Checkout</button>
                     </div>
+                </div>
+                <div class="col-lg-4 col-xl-4 col-md-4 col-sm-12 p-4">
+                    <div class="row text-center border-bottom py-3">
+                        <button type="button" class="btn payment-option w-100 my-2" data-option="vnpay">Thanh
+                            toán qua VNPAY</button>
+                        <button type="button" class="btn payment-option w-100 my-2" data-option="momo">Thanh
+                            toán qua MOMO</button>
+                        <button type="button" class="btn payment-option w-100 my-2" data-option="cash-on-delivery">Thanh
+                            toán khi nhận hàng</button>
+                    </div>
+                    <div id="payment-info" class="col-12 row align-items-center justify-content-center border-bottom py-3">
+                        <div class="col-sm-12 tab-pane fade active show text-center" id="vnpay">
+                            <h2><a href="https://www.vnpay.vn" class="footer-text">Cổng thanh toán</a></h2>
+                            <div class="vnpay-image">
+                                <img src="img/vnpay.jpg" class="img-qrcode rounded" alt="anh qr code">
+                            </div>
+                            <h2 class="text-center">Tổng tiền: <span class="font-monospace text-danger">$135.00</span>
+                            </h2>
+                        </div>
+                        <div class="col-sm-12 tab-pane fade show text-center" id="momo">
+                            <h2><a href="https://www.momo.vn/" class="footer-text">Cổng thanh toán</a></h2>
+                            <div class="vnpay-image">
+                                <img src="img/momo.png" class="img-qrcode rounded" alt="anh qr code">
+                            </div>
+                            <h2 class="text-center">Tổng tiền: <span class="font-monospace text-danger">$135.00</span>
+                            </h2>
+                        </div>
+                        <div class="col-sm-12 tab-pane fade" id="cash-on-delivery">
+                            <h2>Thanh toán khi nhận hàng</h2>
+                            <p>Thanh toán khi nhận hàng là hình thức thanh toán tiền mặt khi nhận hàng tại nhà.
+                                Quý khách vui lòng kiểm tra hàng hóa trước khi thanh toán.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 row g-4 text-center align-items-center justify-content-center pt-4">
+                        <p>By clicking Place Order, you agree to the ESW <a
+                                href="https://retailer.esw.com/wp-content/uploads/2023/03/Terms-and-Conditions-of-Sale-English-v4-24.08.21.pdf"
+                                class="text-decoration-underline">Terms and Conditions</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-4 col-md-4 col-sm-12">
+                    <div class="p-4">
+                        <h1 class="display-6 mb-4">Giỏ hàng</h1>
+                        <div class="d-flex justify-content-between mb-4">
+                            <h5 class="mb-0 me-4">Subtotal:</h5>
+                            <p class="mb-0 text-danger">$96.00</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h5 class="mb-0 me-4">Shipping</h5>
+                            <div class="">
+                                <p class="mb-0">Flat rate: $3.00</p>
+                            </div>
+                        </div>
+                        <p class="mb-0 text-end">Shipping to Ukraine.</p>
+                    </div>
+                    <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                        <h5 class="mb-0 ps-4 me-4">Total</h5>
+                        <p class="mb-0 pe-4 text-danger">$99.00</p>
+                    </div>
+                    <button type="button"
+                        class="btn border-primary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
+                        type="button">Đặt hàng</button>
                 </div>
             </div>
         </div>
     </div>
     <!-- Cart Page End -->
-    
+
+
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
         <div class="container py-5">
@@ -332,13 +385,14 @@
         </div>
     </div>
     <!-- Footer End -->
-    
+
     <!-- Copyright Start -->
     <div class="container-fluid copyright bg-dark py-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>ThangNguyn</a>, All
+                    <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>ThangNguyn</a>,
+                        All
                         right reserved.</span>
                 </div>
                 <div class="col-md-6 my-auto text-center text-md-end text-white">
@@ -351,13 +405,13 @@
         </div>
     </div>
     <!-- Copyright End -->
-    
+
     <!-- bot chat -->
     <!-- Nút hiển thị cố định ở góc dưới phải -->
     <button id="chatbot-button" class="chatbot-btn">
         <img src="img/chatbot.png" alt="Chat Icon" class="chat-icon">
     </button>
-    
+
     <!-- Cửa sổ chat -->
     <div id="chatbot-window" class="chatbot-window" hidden>
         <div class="chat-header">
@@ -375,17 +429,17 @@
             <button id="send-message" class="send-message-btn"><i class="fa fa-paper-plane"></i></button>
         </div>
     </div>
-    
+
     <!-- Thông báo tùy chỉnh -->
     <div id="custom-alert" class="custom-alert hidden">
         <span id="alert-message"></span>
         <button id="close-alert" class="close-alert-btn">&times;</button>
     </div>
-    
+
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
             class="fa fa-arrow-up"></i></a>
-    
+
     <!-- Modal chon size -->
     <div id="sizeGuideModal" class="modal">
         <div class="modal-content">
