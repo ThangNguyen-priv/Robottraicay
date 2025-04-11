@@ -78,9 +78,16 @@
                                 class="position-absolute bg-danger rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
                                 style="top: -5px; left: 15px; height: 20px; min-width: 20px;">0</span>
                         </a>
-                        <a href="#" class="my-auto">
-                            <i class="fas fa-user fa-2x text-primary"></i>
-                        </a>
+                        <div class="nav-item dropdown custom-dropdown">
+                            <a href="#" class="nav-link dropdown-toggle fs-4 text-primary" data-bs-toggle="dropdown"><i
+                                    class="fas fa-user text-primary fs-2"></i></a>
+                            <div class="dropdown-menu m-0 bg-secondary rounded-0 custom-dropdown-menu">
+                                <a href="#" class="dropdown-item fs-4">Admin</a>
+                                <a href="#" class="dropdown-item fs-4">Lịch sử đơn hàng</a>
+                                <a href="#" class="dropdown-item fs-4">Thông tin tài khoản</a>
+                                <a href="#" class="dropdown-item fs-4">Đăng xuất</a>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Hamburger button -->
@@ -95,21 +102,22 @@
                     <!-- Navbar links -->
                     <div class="navbar-nav mx-auto">
                         <a href="index.html" class="nav-item nav-link active fs-4">Home</a>
-                        <a href="nike.html" class="nav-item nav-link fs-4">Nike</a>
-                        <a href="adidas.html" class="nav-item nav-link fs-4">Adidas</a>
-                        <a href="adidas.html" class="nav-item nav-link fs-4">NewBalance</a>
-                        <a href="adidas.html" class="nav-item nav-link fs-4">Puma</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle fs-4" data-bs-toggle="dropdown">Pages</a>
+                            <a href="#" class="nav-link dropdown-toggle fs-4" data-bs-toggle="dropdown">Branding</a>
                             <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                <a href="shop.html" class="dropdown-item fs-4">Shop</a>
-                                <a href="shop-detail.html" class="dropdown-item fs-4">Shopdetails</a>
+                                <a href="nike.html" class="dropdown-item fs-4">Nike</a>
+                                <a href="adidas.html" class="dropdown-item fs-4">Adidas</a>
+                                <a href="puma.html" class="dropdown-item fs-4">Puma</a>
+                                <a href="newbalance.html" class="dropdown-item fs-4">NewBalance</a>
+                            </div>
+                        </div>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle fs-4" data-bs-toggle="dropdown">Catergories</a>
+                            <div class="dropdown-menu m-0 bg-secondary rounded-0">
+                                <a href="#" class="dropdown-item fs-4">Male</a>
+                                <a href="#" class="dropdown-item fs-4">Female</a>
                                 <a href="sale.html" class="dropdown-item fs-4">Sale</a>
-                                <a href="cart.html" class="dropdown-item fs-4">Cart</a>
-                                <a href="chackout.html" class="dropdown-item fs-4">Checkout</a>
-                                <a href="testimonial.html" class="dropdown-item fs-4">Testimonial</a>
-                                <a href="404.html" class="dropdown-item fs-4">404 Page</a>
-                                <a href="contact.html" class="nav-item nav-link fs-4">Contact</a>
+                                <a href="#" class="dropdown-item fs-4">Feature</a>
                             </div>
                         </div>
                     </div>
@@ -121,21 +129,33 @@
                                 class="fas fa-search text-primary"></i>
                         </button>
                         <a href="#" class="position-relative me-4 my-auto">
+                            <i class="fa fa-heart text-primary fa-2x"></i>
+                            <span
+                                class="position-absolute bg-danger rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+                                style="top: -5px; left: 23px; height: 20px; min-width: 20px;">0</span>
+                        </a>
+                        <a href="#" class="position-relative me-4 my-auto">
                             <i class="fa fa-shopping-bag text-primary fa-2x"></i>
                             <span
                                 class="position-absolute bg-danger rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
                                 style="top: -5px; left: 15px; height: 20px; min-width: 20px;">0</span>
                         </a>
-                        <a href="#" class="my-auto">
-                            <i class="fas fa-user fa-2x text-primary"></i>
-                        </a>
+                        <div class="nav-item dropdown custom-dropdown">
+                            <a href="#" class="nav-link dropdown-toggle fs-4 text-primary" data-bs-toggle="dropdown"><i
+                                    class="fas fa-user text-primary fs-2"></i></a>
+                            <div class="dropdown-menu m-0 bg-secondary rounded-0 custom-dropdown-menu">
+                                <a href="#" class="dropdown-item fs-4">Admin</a>
+                                <a href="#" class="dropdown-item fs-4">Lịch sử đơn hàng</a>
+                                <a href="#" class="dropdown-item fs-4">Thông tin tài khoản</a>
+                                <a href="#" class="dropdown-item fs-4">Đăng xuất</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </nav>
         </div>
     </div>
     <!-- Navbar End -->
-
 
     <!-- Modal Search Start -->
     <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
@@ -207,12 +227,13 @@
     <div class="container-fluid featurs py-3">
         <div class="container py-5">
             <div class="row g-4">
-            <div class="col-md-6 col-lg-3">
-                <div class="featurs-item text-center rounded bg-light p-4">
-                <div class="featurs-icon btn-square rounded-circle bg-primary mb-5 mx-auto" style="width: 100px; height: 100px; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-car-side fa-3x text-white"></i>
-                </div>
-                <div class="featurs-content text-center">
+                <div class="col-md-6 col-lg-3">
+                    <div class="featurs-item text-center rounded bg-light p-4">
+                        <div class="featurs-icon btn-square rounded-circle bg-primary mb-5 mx-auto"
+                            style="width: 100px; height: 100px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-car-side fa-3x text-white"></i>
+                        </div>
+                        <div class="featurs-content text-center">
                             <h5>Miễn phí ship</h5>
                             <p class="mb-0">Miễn phí cho hoá đơn trên 2 triệu</p>
                         </div>

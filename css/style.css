@@ -389,6 +389,7 @@
     opacity: 1;
 }
 
+/* search modal */
 #searchModal{
     z-index: 3;
 }
@@ -405,6 +406,7 @@
     transform: scale(1.1); /* Phóng to khi hover */
     transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà */
 }
+
 
 /*** Navbar End ***/
 
